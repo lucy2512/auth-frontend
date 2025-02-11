@@ -1,8 +1,8 @@
 import { Button, Container, Typography } from "@mui/material";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import axiosInstance from "../services/axiosInstance";
 
 
 const Dashboard = () => {
@@ -13,10 +13,11 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const token = localStorage.getItem("token");
-                console.log(token);
-                const res = await axios.get("http://localhost:5000/api/auth/dashboard", { headers: { "Authorization": `Bearer ${token}` } });
-                console.log(token);
+                // const token = localStorage.getItem("token");
+                // console.log(token);
+                // const res = await axios.get("http://localhost:5000/api/auth/dashboard", { headers: { "Authorization": `Bearer ${token}` } });
+                const res = await axiosInstance.get("/dashboard");
+                // console.log(token);
                 setUser(res.data.user);
                 // console.log(user);
             } catch (error) {
