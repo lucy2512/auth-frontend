@@ -18,7 +18,9 @@ const Dashboard = () => {
                 // const res = await axios.get("http://localhost:5000/api/auth/dashboard", { headers: { "Authorization": `Bearer ${token}` } });
                 const res = await axiosInstance.get("/dashboard");
                 // console.log(token);
+                console.log(res.data.user);
                 setUser(res.data.user);
+
                 // console.log(user);
             } catch (error) {
                 console.error("(React)Unauthorized!!!!", error);

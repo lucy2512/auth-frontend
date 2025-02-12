@@ -1,7 +1,7 @@
 import { Container, TextField, Typography, Button } from "@mui/material";
-import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from "../services/axiosInstance";
 
 const Register = () => {
     const [email, setEmail] = useState("");
@@ -10,7 +10,8 @@ const Register = () => {
 
     const handleRegister = async () => {
         try {
-            await axios.post("http://localhost:5000/api/auth/register", { email, password });
+            // await axios.post("http://localhost:5000/api/auth/register", { email, password });
+            await axiosInstance.post("/register", { email, password });
             alert("Registration successful");
             navigate("/login");
         } catch (error) {
