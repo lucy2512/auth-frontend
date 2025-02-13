@@ -15,7 +15,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         await login(email, password);
-        navigate("/dashboard");
+        navigate("/dashboard", { replace: true });
     }
     return (
         <Container maxWidth="sm">
